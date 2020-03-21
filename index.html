@@ -21,55 +21,14 @@
   <script>
 
 
-
-      var xmlDoc;
-      var xmlloaded = false;
-
-      function initLibrary()
-      {
-          importXML("https://spreadsheets.google.com/feeds/worksheets/1IVwEcmh_vHIy_S68mRJPNk9eWBfRcdUDQ1dgX1-c3jQ/private/full");
+      var oReq = new XMLHttpRequest();
+      oReq.addEventListener("load", transferComplete);
+      oReq.open("GET", "https://spreadsheets.google.com/feeds/worksheets/1IVwEcmh_vHIy_S68mRJPNk9eWBfRcdUDQ1dgX1-c3jQ/private/full");
+      oReq.send();
+      function transferComplete(evt) {
+        console.log("The transfer is complete.");
       }
 
-      function importXML(xmlfile)
-      {
-          try
-          {
-              var xmlhttp = new XMLHttpRequest();
-              xmlhttp.open("GET", xmlfile, false);
-          }
-          catch (Exception)
-          {
-              var ie = (typeof window.ActiveXObject != 'undefined');
-
-              if (ie)
-              {
-                  xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
-                  xmlDoc.async = false;
-                  while(xmlDoc.readyState != 4) {};
-                  xmlDoc.load(xmlfile);
-                  readXML();
-                  xmlloaded = true;
-              }
-              else
-              {
-                  xmlDoc = document.implementation.createDocument("", "", null);
-                  xmlDoc.onload = readXML;
-                  xmlDoc.load(xmlfile);
-                  xmlloaded = true;
-              }
-          }
-
-          if (!xmlloaded)
-          {
-              xmlhttp.setRequestHeader('Content-Type', 'text/xml')
-              xmlhttp.send("");
-              xmlDoc = xmlhttp.responseXML;
-              readXML();
-              xmlloaded = true;
-          }
-      }
-
-      initLibrary()
   </script>
 </body>
 </html>
