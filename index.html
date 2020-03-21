@@ -37,8 +37,12 @@
        //Log it to the console
        console.log(xmlDocument);
 
+       //Read one of our XML elements.
+      var title = xmlDocument.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+      alert('title: ' + title);
 
-       
+
+
     })
 
 
