@@ -1,3 +1,32 @@
-Hello World
+<html>
+  <head>
+    <link rel="stylesheet" href="assets/css/style.css">
 
-<img src="assets/images/background-icon-blob.svg">
+  </head>
+  <body>
+
+    <header>
+      <img id="logo" src="assets/images/logo.png">
+    </header>
+    Hello World
+    <img id="svg" src="assets/images/background-icon-blob.svg">
+
+  <div class="container">
+    <h1>
+      Entries
+    </h1>
+    <img src="https://img.youtube.com/vi/DYXEhEW-3mk/0.jpg" alt="">
+  </div>
+
+  <script>
+    console.log("data");
+
+    fetch('https://spreadsheets.google.com/feeds/worksheets/1IVwEcmh_vHIy_S68mRJPNk9eWBfRcdUDQ1dgX1-c3jQ/private/full').then(function(resp) {
+      return resp.text();
+    })
+    .then(function(data) {
+       console.log(data);
+    })
+  </script>
+</body>
+</html>
