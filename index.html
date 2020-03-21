@@ -26,7 +26,24 @@
     })
     .then(function(data) {
        console.log(data);
+
+       //Create a new DOMParser object.
+       var domParser = new DOMParser();
+
+       //Parse the XML string into an XMLDocument object using
+       //the DOMParser.parseFromString() method.
+       var xmlDocument = domParser.parseFromString(data, "text/xml");
+
+       //Log it to the console
+       console.log(xmlDocument);
+
+
+       
     })
+
+
+
+
   </script>
 </body>
 </html>
