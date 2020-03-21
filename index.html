@@ -19,16 +19,14 @@
   </div>
 
   <script>
+    console.log("data");
 
-
-      var oReq = new XMLHttpRequest();
-      oReq.addEventListener("load", transferComplete);
-      oReq.open("GET", "https://spreadsheets.google.com/feeds/worksheets/1IVwEcmh_vHIy_S68mRJPNk9eWBfRcdUDQ1dgX1-c3jQ/private/full");
-      oReq.send();
-      function transferComplete(evt) {
-        console.log(evt);
-      }
-
+    fetch('https://spreadsheets.google.com/feeds/worksheets/1IVwEcmh_vHIy_S68mRJPNk9eWBfRcdUDQ1dgX1-c3jQ/public/full').then(function(resp) {
+      return resp.text();
+    })
+    .then(function(data) {
+       console.log(data);
+    })
   </script>
 </body>
 </html>
